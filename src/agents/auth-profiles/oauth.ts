@@ -17,6 +17,10 @@ import { ensureAuthProfileStore, saveAuthProfileStore } from "./store.js";
 
 const OAUTH_PROVIDER_IDS = new Set(getOAuthProviders().map((provider) => provider.id));
 
+function isOAuthProvider(provider: string): provider is OAuthProvider {
+  return OAUTH_PROVIDER_IDS.has(provider);
+}
+
 const resolveOAuthProvider = (provider: string): OAuthProvider | null =>
   isOAuthProvider(provider) ? provider : null;
 
